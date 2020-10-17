@@ -75,7 +75,7 @@ def main():
     trainLabels = np.asarray(trainLabels)
     testLabels = np.asarray(testLabels)
 
-    print(" Training Linear SVM classifier...")
+    print(" Training Linear SVM classifier..")
     model = LinearSVC()
     model.fit(trainData, trainLabels)
     
