@@ -14,7 +14,7 @@ import argparse
 import cv2
 import os
 import glob
-from PIL import Image # This will be used to read/modify images (can be done via OpenCV too)
+from PIL import Image 
 from numpy import *
 def main():
     print('Hello AI')
@@ -29,21 +29,19 @@ def main():
     data = []
     labels = []
 
-    pos_im_path = r"./Data/positive" # This is the path of our positive input dataset
-    # define the same for negatives
+    pos_im_path = r"./Data/positive" 
     neg_im_path = r"./Data/negative"
 
-    # read the image files:
-    pos_im_listing = os.listdir(pos_im_path) # it will read all the files in the positive image path (so all the required images)
+    pos_im_listing = os.listdir(pos_im_path) 
     neg_im_listing = os.listdir(neg_im_path)
-    num_pos_samples = len(pos_im_listing) # simply states the total no. of images
+    num_pos_samples = len(pos_im_listing) 
     num_neg_samples = len(neg_im_listing)
     print(num_pos_samples,num_neg_samples)
-    for file in pos_im_listing: #this loop enables reading the files in the pos_im_listing variable one by one
+    for file in pos_im_listing:
         img = Image.open(pos_im_path + '/' + file) # open the file
         # print(pos_im_path + '/' + file)
         #img = img.resize((64,128))
-        gray = img.convert('L') # convert the image into single channel i.e. RGB to grayscale
+        gray = img.convert('L') 
         # calculate HOG for positive features
         fd = hog(gray, orientations, pixels_per_cell, cells_per_block, block_norm='L2', feature_vector=True)# fd= feature descriptor
         # cv2.imshow('abcd',fd)
